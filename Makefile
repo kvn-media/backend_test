@@ -5,16 +5,16 @@ postgres:
 	docker run --name postgres12 --network bank-network -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
 
 serverdocker:
-	docker run --name simple_bank -p 8080:8080 -e GIN_MODE=release --network bank-network backend_test:latest
+	docker run --name simple_bank -p 8080:8080 -e GIN_MODE=release --network bank-network simple_bank:latest
 
 mysql:
 	docker run --name mysql8 -p 3306:3306  -e MYSQL_postgres_PASSWORD=secret -d mysql:8
 
 createdb:
-	docker exec -it postgres12 createdb --username=postgres --owner=postgres backend_test
+	docker exec -it postgres12 createdb --username=postgres --owner=postgres simple_bank
 
 dropdb:
-	docker exec -it postgres12 dropdb backend_test
+	docker exec -it postgres12 dropdb simple_bank
 
 migrateup:
 	migrate -path db/migration -database "postgresql://postgres:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
@@ -38,7 +38,7 @@ server:
 	go run main.go
 
 mock:
-	mockgen -package mockdb -destination db/mock/store.go github.com/kvn-media/backend_test/db/sqlc Store
+	mockgen -package mockdb -destination db/mock/store.go github.com/kvn-media/simple_bank/db/sqlc Store
 
 swagger:
 	swag init -g ./api/server.go
