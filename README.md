@@ -30,13 +30,13 @@
 - [Migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
 
     ```bash
-    sudo install golang-migrate
+    brew install golang-migrate
     ```
 
 - [Sqlc](https://github.com/kyleconroy/sqlc#installation)
 
     ```bash
-    sudo install sqlc
+    brew install sqlc
     ```
 
 - [Gomock](https://github.com/golang/mock)
@@ -134,7 +134,7 @@ make dockerexecpostgres
 ### 4. Generate CRUD Golang code from SQL
 - Write CRUD SQL query in [db/query](./db/query)
 - generate golang code with `make sqlc`
-- init go module `go mod init github.com/kvn-media/simple_bank`
+- init go module `go mod init github.com/kvn-media/backend_test`
 
 ### 5. Write Golang unit tests for database CRUD with random data
 - Write tests
