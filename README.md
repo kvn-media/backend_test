@@ -30,13 +30,13 @@
 - [Migrate](https://github.com/golang-migrate/migrate/tree/master/cmd/migrate)
 
     ```bash
-    brew install golang-migrate
+    sudo install golang-migrate
     ```
 
 - [Sqlc](https://github.com/kyleconroy/sqlc#installation)
 
     ```bash
-    brew install sqlc
+    sudo install sqlc
     ```
 
 - [Gomock](https://github.com/golang/mock)
